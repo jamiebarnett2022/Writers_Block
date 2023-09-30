@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-dark text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+  
+              <div class="mb-md-6 mt-md-4 pb-5">
+  
+                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                <p class="text-white-50 mb-5">Please enter your login and password!</p>
+
+                <form method="post">
+                    <div class="form-outline form-white mb-4">
+                        <input type="text" name="username" class="form-control form-control-lg" placeholder="Enter username" id="username"></input>
+                    </div>
+               
+                    <div class="form-outline form-white mb-4">
+                      <input type="password"  name="password" class="form-control form-control-lg" id="password" placeholder="Password">
+                    </div>
+                    <div class="d-flex justify-content-center mt-4 pt-1">
+                        <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                    </div>
+                </form>
+              </div>
+              <div>
+                <p class="mb-0">Don't have an account? <a href="{{ url_for('signin')}}"  class="text-white-50 fw-bold">Register</a>
+                </p>
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+<div class=container>
+    <form method="post">
+        <div class="form-group" style="padding-top: 5%;">
+            <input type="text" name="username"
+                placeholder="Enter username" class="form-control form-control-lg"
+                 id="enteredUserName"></input>
+        </div>
+
+        <div class="form-group" style="padding-top: 2%;">
+            <input type="password"  name="password" class="form-control form-control-lg" id="password" placeholder="Password">
+        </div>
+        
+        <div class="form-group" style="padding-top: 2%;">
+            <input type="password" name="checkpassword" class="form-control form-control-lg" id="checkpassword" placeholder="Reenter password">
+        </div>
+
+        <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="submit" class="btn btn-primary btn-lg"
+            style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
+            <p class="small fw-bold mt-2 pt-1 mb-0">Already have account? 
+                <a href="{{ url_for('login')}}" class="link-danger">Log In</a></p>
+        </div>
+    </form> 
+</div>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#createModal">
+    Launch demo modal
+  </button>
+
+  <div class="modal fade" id="createModal" name="createModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        </div>
+        <div class="modal-body">
+          <label for="WPM" class="form-label">Insert goal WPM</label>
+          <p class="text-center" id="value">50 </p>
+          <p class="text-center">WPM</p>
+              <input type="range" value="50" class="form-range" id="WPM" min="0" max="130" oninput="update(this.value)"/>
+          <script type="text/javascript" src="{{url_for('static', filename='slider.js')}}">
+            update(val);
+          </script>
+          <input type="text" name="wordcount" id="wordcount" value="5">
+          <p> words</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="start()" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div class="modal fade" id="stopWritingModalWin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Stop Writing?</h5>
+        </div>
+        <div class="modal-body">
+          <p>You've reached your goal!</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick = "showTitleForm()">Stop Writing & Save Work</button>
+          <button type="button" class="btn btn-secondary" onclick="cont()" data-dismiss="modal">Continue Writing</button>
+          <button type="button" class="btn btn-secondary" onclick="start()" data-dismiss="modal">Start Over</button>
+          <form id="makeTitle" name="makeTitle" style="display: none;">
+            <input onsubmit="title(this.value)"></input>
+          </form>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <form method="post" id="postform" name="postform">
+    <input type="text" id="inputArea" name="writing" oninput="updateWordCount()"></input>
+    <input id="title" name="title" style="display: none;"></input>
+  </form>
+  
+  <output id="timerValue">0</output>
+  <output id="numWords">0</output>
+  <output id="wordsPerMinute">0</output>
+  <output id = "underWPM">under</output>
+
+  <script type="text/javascript" src="{{url_for('static', filename='speedgame.js')}}">
+    $('createModal').modal()
+  </script>
+
+  
+
+{% endblock %}
